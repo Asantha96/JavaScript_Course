@@ -1,0 +1,11 @@
+p{
+  font-size: 24px;
+}
+.cart-button{
+  background-color: rgb(255, 234, 0);
+  font-size: 16px;
+}
+.buy-button{
+  font-size: 16px;
+  background-color: orangered;
+}
