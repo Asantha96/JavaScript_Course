@@ -12,34 +12,48 @@
 
   <button onclick="
     let playerMove = 'rock';
-    let computerMove = getComputerMove();
-    let result = playGame(playerMove,computerMove);
+    playGame(playerMove);
     
-    alert('You picked rock. Computer picked '+computerMove+'. '+result);
+    
 
   ">Rock</button>
 
   <button onclick="
 
     playerMove = 'paper';
-    computerMove = getComputerMove();
-    result = playGame(playerMove,computerMove);
-    
-    alert('You picked paper. Computer picked '+computerMove+'. '+result);
+    playGame(playerMove);
 
   ">Paper</button>
 
   <button onclick="
-  
     playerMove = 'scissor';
-    computerMove = getComputerMove();
-    result = playGame(playerMove,computerMove);
-    
-    alert('You picked scissor. Computer picked '+computerMove+'. '+result);
+    playGame(playerMove);
     
   ">Scissors</button>
 
+  <button onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+
+      localStorage.removeItem('score');
+      
+    ">Reset score</button>
+
   <script>
+    let score = JSON.parse(localStorage.getItem('score')) || {wins: 0, losses: 0, ties: 0};
+
+    /*if(score === null){
+      score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+
+      };
+    };*/
+    
+
+
     function getComputerMove() {
       const randomNumber = Math.random();
       let computerMove = '';
@@ -53,36 +67,45 @@
       return computerMove;
     }
 
-    function playGame(playerMove,computerMove) {
+    function playGame(playerMove) {
       let result = '';
-
+      let computerMove = getComputerMove();
       if (playerMove === 'rock') {
         if (computerMove === 'rock') {
           result = 'Tie.';
         } else if (computerMove === 'paper') {
-          result = 'You loose.'
+          result = 'You lose.'
         } else if (computerMove === 'scissor') {
           result = 'You win.';
         }
-      }else if(playerMove == 'paper'){
+      }else if(playerMove === 'paper'){
         if (computerMove === 'rock') {
           result = 'You win.';
         } else if (computerMove === 'paper') {
           result = 'Tie.'
         } else if (computerMove === 'scissor') {
-          result = 'You loose.';
+          result = 'You lose.';
         }
       }else if(playerMove === 'scissor'){
         if (computerMove === 'rock') {
-          result = 'You loose.';
+          result = 'You lose.';
         } else if (computerMove === 'paper') {
           result = 'You win.'
         } else if (computerMove === 'scissor') {
           result = 'Tie.';
         }
       }
-      return result;
+      if (result === 'You win.') score.wins++;  
+      else if (result === 'You lose.') score.losses++;
+      else if(result === 'Tie.') score.ties++;
+
+      localStorage.setItem('score', JSON.stringify(score));
+
+      alert(`You picked rock. Computer picked ${computerMove}. ${result}\nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+
+      
     }
+
   </script>
 </body>
 </html>
