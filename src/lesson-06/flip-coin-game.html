@@ -7,18 +7,37 @@
   <title>Flip Coin Game</title>
 </head>
 <body>
+  <button onclick="
+    playGame('head');
+    ">heads</button>
+
+  <button onclick="
+    playGame('tail');
+  ">tails</button>
+
+  <button onclick="
+    score.wins = 0;
+    score.losses = 0;
+    localStorage.removeItem('score');
   
+  ">Reset</button>
 
   <script>
-    const guess = 'tail';
-    let computerResult ='';
-    const randomNumber = Math.random();
+    let score = JSON.parse(localStorage.getItem('score')) || {wins: 0,losses:0};
 
-    computerResult = (randomNumber >= 0 && randomNumber < 0.5) ? 'head' : 'tail';
+    function playGame(guess) {
+      let computerResult ='';
+      const randomNumber = Math.random();
+      computerResult = (randomNumber >= 0 && randomNumber < 0.5) ? 'head' : 'tail';
+      const toss = (computerResult===guess) ? 'You win' : 'You loose';
+      if (toss === 'You win') score.wins++;
+      else score.losses++; 
+      localStorage.setItem('score', JSON.stringify(score));
+      alert(`You selected ${guess}.: computer selected: ${computerResult}. ${toss}. \nWins: ${score.wins}. Losses: ${score.losses}`);
+      console.log(score);
+      
+    }
     
-    console.log(computerResult);
-    const toss = (computerResult===guess) ? 'You win' : 'You loose';
-    alert(toss);
 
 
   </script>
