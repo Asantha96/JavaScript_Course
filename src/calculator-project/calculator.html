@@ -9,32 +9,33 @@
 <body>
   
 <button onclick="
-  calculation += 1;
-  console.log(calculation);
+  updateCalculation('1')
   ">1</button>
 
 <button onclick="
-  calculation += 2;
-  console.log(calculation);
+  updateCalculation('2')
   ">2</button>
 
 <button onclick="
-  calculation += 3;
-  console.log(calculation);
+  updateCalculation('3')
   ">3</button>
 
 <button onclick="
-  calculation += '+';
-  console.log(calculation);
+  updateCalculation('+')
   ">+</button>
 
 <button onclick="
-  calculation += '=';
-  console.log(calculation);
+  updateCalculation('=')
   ">=</button>
 
   <script>
-    let calculation ='';
+    let calculation = localStorage.getItem('calculation') || '';
+
+    function updateCalculation(value) {
+      calculation += value;
+      console.log(calculation);
+      localStorage.setItem('calculation',calculation);
+    }
 
   </script>
 </body>
