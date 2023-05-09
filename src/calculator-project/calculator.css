@@ -1,0 +1,17 @@
+body{
+  background-color: rgb(25, 25, 25);
+}
+button{
+  height: 45px;
+  width: 45px;
+  padding: 5px;
+  border-radius: 30px;
+  border: none;
+  margin: 5px 5px 5px 5px;
+  background-color: rgb(53, 50, 50);
+  color: white;
+  font-size: 15px;
+}
+.arithmatic-operation{
+  background-color: rgb(255, 153, 0);
+}
