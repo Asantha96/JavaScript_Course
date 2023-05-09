@@ -14,6 +14,7 @@
     `);
     document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}
     `);
+    localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     ">Show Quantiy</button>
 
   <button onclick="
@@ -21,9 +22,11 @@
       cartQuantity++;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
     
   ">Add to cart</button>
@@ -34,9 +37,11 @@
       cartQuantity += 2;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
   ">+2</button>
 
@@ -45,9 +50,11 @@
       cartQuantity += 3;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantiy').innerHTML = (`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
   ">+3</button>
 
@@ -56,9 +63,11 @@
       cartQuantity += 4;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
   ">+4</button>
 
@@ -67,9 +76,11 @@
       cartQuantity += 5;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Maximum order quantity is 10. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
 
   ">+5</button>
@@ -79,9 +90,11 @@
       cartQuantity--;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Minimum order quantity is 1. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Minimum order quantity is 1. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
   ">Remove from Cart</button>
 
@@ -91,9 +104,11 @@
       console.log(`Cart quantity: ${cartQuantity}`);
 
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Minimum order quantity is 1. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Minimum order quantity is 1. Ordered quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
   ">-2</button>
 
@@ -102,9 +117,11 @@
       cartQuantity -= 3;
       console.log(`Cart quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}`);
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }else{
       console.log(`Minimum order quantity is 1. Ordered quantity: ${cartQuantity}`);
       document.querySelector('.js-viewQuantity').innerHTML = (`Minimum order quantity is 1. Ordered quantity: ${cartQuantity}`)
+      localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
     }
     ">-3</button>
 
@@ -114,12 +131,13 @@
     console.log('Cart was reset');
     console.log(`Cart quantity: ${cartQuantity}`);
     document.querySelector('.js-viewQuantity').innerHTML = `Cart quantity: ${cartQuantity}`;
+    localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
   ">Reset Cart</button>
   <p class="js-viewQuantity"></p>
 
 
   <script>
-    let cartQuantity = 0;
+    let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity'));
     document.querySelector('.js-viewQuantity').innerHTML = (`Cart quantity: ${cartQuantity}
     `);
   </script>

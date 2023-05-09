@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+<body>
+  
+<button onclick="
+  updateCalculation('1')
+  ">1</button>
+
+<button onclick="
+  updateCalculation('2')
+  ">2</button>
+
+<button onclick="
+  updateCalculation('3')
+  ">3</button>
+
+<button onclick="
+  updateCalculation('+')
+  ">+</button>
+
+<button onclick="
+  updateCalculation('=')
+  ">=</button>
+  <p class="js-result"></p>
+
+  <script>
+    let calculation = localStorage.getItem('calculation') || '';
+    document.querySelector('.js-result').innerHTML = calculation;
+
+    function updateCalculation(value) {
+      calculation += value;
+      console.log(calculation);
+      document.querySelector('.js-result').innerHTML = calculation;
+      localStorage.setItem('calculation',calculation);
+    }
+
+  </script>
+</body>
+</html>
