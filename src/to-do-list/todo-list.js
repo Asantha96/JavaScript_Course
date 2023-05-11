@@ -1,11 +1,24 @@
-const todoListArray = [{name:'make dinner',dueDate:'2023-05-07'}, {name:'wash dishes', dueDate:'2023-07-08'}];
+//let todoListArray = JSON.parse(localStorage.getItem('todoListArray')) || [];
+const todoListArray=[];
 renderTodoList();
+
+
 function addTodo() {
-  const inputElement = document.querySelector('.js-name-input');
-  todoListArray.push(inputElement.value);
-  //console.log(todoListArray);
+  /*const inputNameElement = document.querySelector('.js-name-input');
+  const inputDateElement = document.querySelector('.js-date-input');
+  todoListArray.push({name:inputNameElement.value, dueDate:inputDateElement.value});
   renderTodoList();
-  inputElement.value='';
+  inputNameElement.value='';
+  inputDateElement.value='';*/
+
+  const name = document.querySelector('.js-name-input').value;
+  const dueDate = document.querySelector('.js-date-input').value;
+  todoListArray.push({name,dueDate});
+  renderTodoList();
+  //localStorage.setItem('todoListArray',JSON.stringify(todoListArray));
+  
+  document.querySelector('.js-name-input').value = '';
+  document.querySelector('.js-date-input').value = '';
   
 } 
 function renderTodoList() {
@@ -13,18 +26,21 @@ function renderTodoList() {
   let todoListHTML = '';
   for(let i=0; i<todoListArray.length; i++){
     const todoObject = todoListArray[i];
-    const name = todoObject.name;
-    const dueDate = todoObject.dueDate;
-    const html = `<p>
-                    ${todo} ${dueDate}
-                    <button onclick="
-                      todoListArray.splice(${i},1);
-                      renderTodoList();
-                    " >Delete</button>
-                  </p>`;
+    /*//const name = todoObject.name;
+    const{name} = todoObject; //destructuring
+    //const dueDate = todoObject.dueDate;
+    const {dueDate} = todoObject;*/
+    const{name,dueDate}=todoObject; //destructured and simplified
+    const html = `
+                  <div>${name}</div>
+                  <div>${dueDate}</div>
+                  <button class='delete-button' onclick="
+                    todoListArray.splice(${i},1);
+                    renderTodoList();
+                  " >Delete</button>
+                `;
     todoListHTML += html; 
   }
-  //console.log(todoListHTML);
   document.querySelector('.js-todo-list').innerHTML = todoListHTML;
   
 }
