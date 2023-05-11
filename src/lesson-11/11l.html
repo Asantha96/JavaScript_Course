@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    let objValues = minMax([]);
+    console.log(`Minumum Value:${objValues.min}`);
+    console.log(`Maximum Value:${objValues.max}`)
+
+    function minMax(array) {
+      const obj={min:null, max:null}
+      if (array.length===0){}
+        
+      else{
+        obj.min = array[0];
+        obj.max = array[0];
+        for (let i = 1; i < array.length; i++) {
+          if (obj.min > array[i]) {
+            obj.min = array[i];
+          }
+          if (obj.max < array[i]) {
+            obj.max = array[i];
+          }
+        }
+      }
+      return obj;
+
+    }
+  </script>
+</body>
+</html>
